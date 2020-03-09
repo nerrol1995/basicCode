@@ -8,9 +8,10 @@
  function create() {
    let obj = {};
    const [contructorFn,...args] = arguments;
-   obj.__proto__ = contructorFn.prototype;
+  //  obj.__proto__ = contructorFn.prototype;
+   Object.setPrototypeOf(obj,contructorFn.prototype);
    const result = contructorFn.apply(obj,args);
    return result instanceof Object ? result : obj;
  }
-
+ 
  export default create;
